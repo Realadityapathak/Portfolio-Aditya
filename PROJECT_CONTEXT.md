@@ -66,15 +66,25 @@
 ### Directory Tree & Purpose
 ```
 c:\portfolio-aditya\
+├── .git/                     # Git version control repository (branch: main)
+├── .gitignore                # Production ignore rules (.env*.local, node_modules, .next)
 ├── .next/                    # Next.js build output and dev cache (auto-generated)
 ├── node_modules/             # Installed dependencies
 ├── public/                   # Static public assets
-│   └── og.jpg                # OpenGraph social preview image (1200x630)
+│   ├── education/            # Degree institute badges (LPU, GNC)
+│   ├── projects/             # Real project screenshots (Chatify, E-commerce, Resume Analyzer)
+│   ├── icon.svg              # Browser favicon SVG
+│   ├── og.jpg                # OpenGraph social preview image (1200x630)
+│   └── resume.pdf            # PDF resume for download
 ├── src/
 │   ├── app/                  # Next.js App Router root
+│   │   ├── actions/          # Server Actions
+│   │   │   └── contact.ts    # Resend email handler + spam honeypot
 │   │   ├── globals.css       # Core design tokens, glassmorphism utilities, CSS reset
-│   │   ├── layout.tsx        # Root HTML shell, fonts, metadataBase, ToastProvider
-│   │   └── page.tsx          # Single-page portfolio aggregating all section components
+│   │   ├── layout.tsx        # Root HTML shell, fonts, dynamic metadataBase, JSON-LD Schema
+│   │   ├── page.tsx          # Single-page portfolio aggregating all section components
+│   │   ├── robots.ts         # Dynamic robots.txt metadata route
+│   │   └── sitemap.ts        # Dynamic XML sitemap metadata route
 │   ├── components/
 │   │   ├── sections/         # Visual portfolio sections
 │   │   │   ├── Preloader.tsx     # Timed entrance animation overlay (1.2s timeout)
@@ -87,10 +97,10 @@ c:\portfolio-aditya\
 │   │   │   ├── Projects.tsx      # Bento grid of shipped projects (Chatify, E-Commerce, AI Resume)
 │   │   │   ├── Education.tsx     # Academic qualifications (MCA & BCA)
 │   │   │   ├── Certifications.tsx# Industry certifications with official logos (HackerRank, Google Cloud, IBM)
-│   │   │   ├── Contact.tsx       # Contact form with react-hook-form + Sonner toast
+│   │   │   ├── Contact.tsx       # Contact form with react-hook-form + Resend server action
 │   │   │   └── Footer.tsx        # Signature footer, navigation links, and back-to-top button
 │   │   └── ui/               # Reusable presentational components
-│   │       ├── MockupGrad.tsx    # Decorative gradient container for project cards
+│   │       ├── MotionProvider.tsx# Framer Motion LazyMotion provider
 │   │       └── ToastProvider.tsx # Sonner Toaster component configuration
 ├── next-env.d.ts             # Next.js TypeScript declarations
 ├── next.config.js            # Next.js bundler and image optimization configuration
